@@ -1,0 +1,65 @@
+
+meanFrequency:omit
+contains mean, std in name: keep
+180 rows of subject/activity
+merge data files and labels files
+merge: 10299 rows, 561 columns, rbind
+X_,y_,subject_ files
+features.txt | features_info.txt file contains the code book for the original data set
+activity_labels.txt
+561 columns in _.txt with 561 rowsin features
+read.table
+write.table
+no row numbers
+data assumed present in directory
+.gitignore with *.zip, https://git-scm.com/docs/gitignore
+"tBodyAcc-Xmean()" to TimeDomain_BodyAcceleration_XAxis_Mean
+activity_labels.txt
+y_.txt contains activities in X_.
+summarise_each(df_final, funs(mean)), dim(output_tidy_data) -> [1] 180 88
+summarize_each(dataframe=, funs(), and a way of subselecting the columns: I used contains
+read.table( ....., check.names=FALSE)
+t = time and f = frequency
+I believe that the strictly correct answer is the one with 68
+exclude MeanFreq
+mean\\(\\)
+all 561 measurements are describing the same action at the same time (so you cannot melt anything)
+
+Step 2 asks us to subset the original data set to include only those variables with either 'mean' (mean) or std' (standard deviation) in their names. Which of these variables to subset on is left to the learner.
+
+Step 3 asks us to transform the numeric/character codes for the activities performed by each of the subjects into its associated word or words equivalent. One of the data files contains the activity names.
+
+Step 4 asks us to create variable names from the existing names which are understandable to a non-domain expert. Ideally create a function that transforms the variables names using pattern matching so you do not have to rename variables individually.
+
+In the submission box, as well as the link, put some accompanying text on another line something like “tidy data as per the ReadMe that can be read into R with read.table(header=TRUE) {listing any settings you have changed from the default}”
+
+In the readMe in explaining what the script does put “and then generates a tidy data text file that meets the principles of …etc”
+
+should be "row.names=FALSE"
+
+Try with fixed=TRUE, I have found this advice at: http://stackoverflow.com/questions/9449466/remove-parenthesis-from-string
+
+ignore the data under Inertial Signals.
+
+rbind_list from the dplyr package to combine them. rbindlist
+
+refrence data TXT files use UNIX EOL (LF), while measurements TXTs use CRLF
+
+The only dataset you might want to include as part of the repository is the final tidy dataset. The raw dataset nor the intermediary datasets are necessary.
+
+GDH: You can create a codebook by hand and start from scratch. The mentioned available codebooks can be used as an exemplar or you can define your own format for the codebook that you will submit. If you have worked work database schemas, think of a codebook as a data dictionary. Nothing fancy is required for the course project. We are not expecting codebook at the level (http://www.icpsr.umich.edu/cgi-bin/file?comp=none&study=7420&ds=1&file_id=624963&path=ICPSR) of ICPSR.
+
+http://blogs.biomedcentral.com/bmcblog/2013/11/26/how-to-share-data-with-a-statistician/
+
+The files y_*.txt are the outcomes of each activity (1-6). They will be single numbers. That's all that you will find in the file is rows of single numbers. It's the same for subject_*.txt except they're the subject ID (1-30).
+
+If you add this data to their corresponding X_*.txt files, you will have the features, outcomes, and subject IDs to work with. Read them in with read.table() and you should see the data you need.
+
+"mean()" or "std()" . By definition, this still remains a "tidy" data set (of 66 eligible columns)
+
+newlines/line breaks every 7352 rows
+
+The first data set will have repeated measurements for a subject and an activity. The second data set will be produced by grouping by activity and subject and that will contain the final means.
+
+combine the X_test, X_train, y_test, y_train, subject_test, subject_train and activity_id files
+
